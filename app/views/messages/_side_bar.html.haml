@@ -1,0 +1,20 @@
+.side-bar
+  .side-bar__user-name
+    .top-items
+      %p.top-items__name くろちゃん
+      %ul.top-items__icons
+        %li.top-items__icons__edit  
+          = link_to "#" do
+            = icon('fas', 'edit')
+        %li.top-items__icons__new-group
+          = link_to "#" do
+            = icon('fas', 'cog')
+            
+  .side-bar__group-list
+    .groups
+      = link_to "#", class: "group" do
+        .group
+          %p.group__name
+            techcamp
+          %p.group__new-message
+            まだメッセージはありません
