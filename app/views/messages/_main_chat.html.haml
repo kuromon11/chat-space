@@ -1,0 +1,38 @@
+.chat-main
+  .chat-main__group-info
+    .group-box
+      .group-box__current-group テックエキスパート71期
+      .group-box__member-box
+        %ul.group-box__member-box__member 
+          Member:
+          %li.group-box__member-box__member__list くろちゃん
+          %li.group-box__member-box__member__list しろちゃん
+    .edit-btn
+      = link_to "#", class: "btn" do
+        .btn
+          %p.btn__name Edit
+
+  .chat-main__message-list
+    .one-message
+      .one-message__upper
+        %p.one-message__upper__member-name
+          くろちゃん
+        %p.one-message__upper__history 
+          2020/02/21(Fry) 11:00:00
+      %p.one-message__text
+        スタバなう
+      .one-message__upper
+        %p.one-message__upper__member-name
+          しろちゃん
+        %p.one-message__upper__history 
+          2020/02/21(Fry) 11:00:00
+      %p.one-message__text
+        マクドなう
+
+  .chat-main__message-form
+    .input-box
+      %input{type: "text", class: "input-box__text", placeholder: "type a message"}
+      %label{class: "input-box__image"}
+        = icon('fas', 'image')
+        %input{type: "file", class: "input-box__image__file"}
+    %form{type: "submit", class: "submit-btn"} Send
