@@ -13,26 +13,22 @@
           %p.btn__name Edit
 
   .chat-main__message-list
-    .one-message
-      .one-message__upper
-        %p.one-message__upper__member-name
-          くろちゃん
-        %p.one-message__upper__history 
-          2020/02/21(Fry) 11:00:00
-      %p.one-message__text
-        スタバなう
-      .one-message__upper
-        %p.one-message__upper__member-name
-          しろちゃん
-        %p.one-message__upper__history 
-          2020/02/21(Fry) 11:00:00
-      %p.one-message__text
-        マクドなう
+    .messages
+      = render @messages
 
   .chat-main__message-form
-    .input-box
-      %input{type: "text", class: "input-box__text", placeholder: "type a message"}
-      %label{class: "input-box__image"}
+    = form_for [@group, @message],html: {class: "input-box"} do |f|
+      = f.text_field :content, class: "input-box__text", placeholder: 'type a message'
+      = f.label :image, class: "input-box__image" do
         = icon('fas', 'image', class: "icon")
-        %input{type: "file", class: "input-box__image__file"}
-    %form{type: "submit", class: "submit-btn"} Send
+        = f.file_field :image, class: "input-box__image__file"
+      = f.submit 'Send', class: "submit-btn"
+
+-#(修正前)
+  -#  .chat-main__message-form
+  -#   .input-box
+  -#     %input{type: "text", class: "input-box__text", placeholder: "type a message"}
+  -#     %label{class: "input-box__image"}
+  -#       = icon('fas', 'image', class: "icon")
+  -#       %input{type: "file", class: "input-box__image__file"}
+  -#   %form{type: "submit", class: "submit-btn"} Send
