@@ -1,14 +1,20 @@
 .chat-main
   .chat-main__group-info
     .group-box
-      .group-box__current-group テックエキスパート71期
+      .group-box__current-group
+        -# groupのインスタンス変数にあるnameを表示
+        = @group.name
       .group-box__member-box
         %ul.group-box__member-box__member 
           Member:
-          %li.group-box__member-box__member__list くろちゃん
-          %li.group-box__member-box__member__list しろちゃん
+        -# groupのインスタンス変数にあるusersからeachメソッドでuser_idを取り出して表示
+        - @group.users.each do |user_id|
+          %li.group-box__member-box__member__list
+            =user_id.name
+
+          
     .edit-btn
-      = link_to "#", class: "btn" do
+      = link_to edit_group_path(@group), class: "btn" do
         .btn
           %p.btn__name Edit
 
