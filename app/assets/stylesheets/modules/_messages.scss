@@ -89,6 +89,7 @@
           display: flex;
           &__list {
             padding-right: 5px;
+            list-style: none;
           }
         }
       }
@@ -116,12 +117,12 @@
     width: calc(100vw - 300px);
     background-color: #fafafa;
     padding: 35px 0 0 40px;
-    .one-message { //メッセージのタイムライン
+    .message { //メッセージのタイムライン
       margin-bottom: 46px;
       &__upper {
         margin-bottom: 12px;
         display: flex;
-        &__member-name {
+        &__name {
           color: #333333;
           font-size: 16px;
           font-weight: bold;
@@ -139,7 +140,7 @@
     }
   }
 
-  &__message-form {
+  &__message-form { //メッセージフォーム
     height: 90px;
     width: calc(100vw - 300px);
     background-color: #d2d2d2;
@@ -152,13 +153,14 @@
       width: 100%;
       display: flex;
       position: relative;
-      &__text {
+      &__text { //テキスト
         width: 100%;
         padding: 0 30px 0 10px;
+        border-style: none;
       }
-      &__image {
+      &__image { //画像
         position: absolute;
-        right: 10px;
+        right: 110px;
         top: 15px;
         &__file{
           display: none;
