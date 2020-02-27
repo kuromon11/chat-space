@@ -4,14 +4,16 @@
 
 .wrapper {
   display: flex;
+  height: 100vh;
 }
 
 .side-bar { //サイドバー
   width: 300px;
+  height: 100vh;
   &__user-name {
     height: 100px;
     width: 300px;
-    background-color: #253141;
+    background-color: $UsernameColor;
     font-weight: bold;
     display: flex;
     justify-content: center;
@@ -22,7 +24,7 @@
       display: flex;
       justify-content: space-between;
       &__name {
-        color: white;
+        color: $WhiteColor;
         font-size: 16px;
       }
       &__icons { 
@@ -31,7 +33,7 @@
         width: 60px;
         li {
           a {
-            color: #ffffff;
+            color: $WhiteColor;
             padding-left: 5px;
           }
         }
@@ -40,11 +42,13 @@
   }
 
   .side-bar__groups-list { //グループリスト
-    background-color: #2f3e51;
+    background-color: $GrouplistColor;
     height: calc(100vh - 100px);
     padding: 20px;
+    // スクロールができるプロパティ
+    overflow: auto;
     .group { //グループ名と最新のテキスト
-      color: #ffffff;
+      color: $WhiteColor;
       text-decoration: none;
       font-weight: bold;
       &__name {
@@ -63,17 +67,18 @@
 
 
 .chat-main { //メインバー
+  height: 100vh;
   &__group-info { //グループに関する情報
     height: 100px;
     width: calc(100vw - 300px);
-    background-color: #ffffff;
+    background-color: $WhiteColor;
     display: flex;
     justify-content: space-between;
     .group-box {
       height: 40px;
       margin: 35px 0 0 40px;
       &__current-group {
-        color: #333333;
+        color: $CurrentgroupColor;
         font-size: 20px;
         line-height: 35px;
       }
@@ -83,7 +88,7 @@
         margin-top: 15px;
         display: flex;
         &__member {
-          color: #999999;
+          color: $MemberColor;
           font-size: 12px;
           line-height: 12px;
           display: flex;
@@ -98,13 +103,13 @@
       margin: 28px 40px 0 0;
       width: 72px;
       height: 40px;
-      border: 1px solid #38aef0;
+      border: 1px solid $BtnColor;
       .btn {
         text-decoration: none;
         font-weight: bold;
         line-height: 40px;
         &__name {
-          color: #38aef0;
+          color: $BtnColor;
           font-size: 16px;
           text-align: center;
         }
@@ -113,29 +118,33 @@
   }
 
   &__message-list {
-    height: calc(100vh - 100px - 90px);
-    width: calc(100vw - 300px);
-    background-color: #fafafa;
-    padding: 35px 0 0 40px;
-    .message { //メッセージのタイムライン
-      margin-bottom: 46px;
-      &__upper {
-        margin-bottom: 12px;
-        display: flex;
-        &__name {
-          color: #333333;
-          font-size: 16px;
-          font-weight: bold;
-        }
-        &__history {
-          color: #999999;
-          font-size: 12px;
-        }
-      }
-      &__text {
-        color: #434A54;
-        font-size: 14px;
+    // スクロールができるプロパティ
+    .messages {
+      height: calc(100vh - 100px - 90px);
+      width: calc(100vw - 300px);
+      background-color: $MessagesColor;
+      padding: 35px 0 0 40px;
+      overflow: auto;
+      .message { //メッセージのタイムライン
         margin-bottom: 46px;
+        &__upper {
+          margin-bottom: 12px;
+          display: flex;
+          &__name {
+            color: $MessageNameColor;
+            font-size: 16px;
+            font-weight: bold;
+          }
+          &__history {
+            color: $MessageHistoryColor;
+            font-size: 12px;
+          }
+        }
+        &__text {
+          color: $MessageTextColor;
+          font-size: 14px;
+          margin-bottom: 46px;
+        }
       }
     }
   }
@@ -143,7 +152,7 @@
   &__message-form { //メッセージフォーム
     height: 90px;
     width: calc(100vw - 300px);
-    background-color: #d2d2d2;
+    background-color: $MessageformColor;
     padding: 0 40px;
     display: flex;
     align-items: center;
@@ -171,8 +180,8 @@
       width: 100px;
       height: 50px;
       line-height: 50px;
-      background-color: #38aef0;
-      color: white;
+      background-color: $BtnColor;
+      color: $WhiteColor;
       font-weight: bold;
       text-align: center;      
       margin-left: 15px;
