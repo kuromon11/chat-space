@@ -59,6 +59,9 @@ $(function(){
     })
     .done(function(data){
       var html = buildHTML(data);
+      //messagesクラスが適用されているdiv要素の子要素の一番最後に追加
+      $('.messages').append(html);
+      $('form')[0].reset();
     })
   });
 });
