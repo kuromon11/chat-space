@@ -9,6 +9,7 @@
 
 .side-bar { //サイドバー
   width: 300px;
+  height: 100vh;
   &__user-name {
     height: 100px;
     width: 300px;
@@ -45,7 +46,7 @@
     height: calc(100vh - 100px);
     padding: 20px;
     // スクロールができるプロパティ
-    overflow: scroll;
+    overflow: auto;
     .group { //グループ名と最新のテキスト
       color: #ffffff;
       text-decoration: none;
@@ -66,6 +67,7 @@
 
 
 .chat-main { //メインバー
+  height: 100vh;
   &__group-info { //グループに関する情報
     height: 100px;
     width: calc(100vw - 300px);
@@ -116,31 +118,33 @@
   }
 
   &__message-list {
-    height: calc(100vh - 100px - 90px);
-    width: calc(100vw - 300px);
-    background-color: #fafafa;
-    padding: 35px 0 0 40px;
     // スクロールができるプロパティ
-    overflow: scroll;
-    .message { //メッセージのタイムライン
-      margin-bottom: 46px;
-      &__upper {
-        margin-bottom: 12px;
-        display: flex;
-        &__name {
-          color: #333333;
-          font-size: 16px;
-          font-weight: bold;
-        }
-        &__history {
-          color: #999999;
-          font-size: 12px;
-        }
-      }
-      &__text {
-        color: #434A54;
-        font-size: 14px;
+    .messages {
+      height: calc(100vh - 100px - 90px);
+      width: calc(100vw - 300px);
+      background-color: #fafafa;
+      padding: 35px 0 0 40px;
+      overflow: auto;
+      .message { //メッセージのタイムライン
         margin-bottom: 46px;
+        &__upper {
+          margin-bottom: 12px;
+          display: flex;
+          &__name {
+            color: #333333;
+            font-size: 16px;
+            font-weight: bold;
+          }
+          &__history {
+            color: #999999;
+            font-size: 12px;
+          }
+        }
+        &__text {
+          color: #434A54;
+          font-size: 14px;
+          margin-bottom: 46px;
+        }
       }
     }
   }

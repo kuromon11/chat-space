@@ -1,47 +1,47 @@
 $(function(){
-    function buildHTML(message){
-      // 「もしメッセージに画像が含まれていたら」という条件式
-      if (message.image) {
-        //メッセージに画像が含まれる場合のHTMLを作る
-        var html = 
-          `<div class="message" data-message-id=${message.id}>
-            <div class="message__upper">
-              <div class="message__upper__name">
-                ${message.user_name}
-              </div>
-              <div class="message__upper__history">
-                ${message.created_at}
-              </div>
+  function buildHTML(message){
+    // 「もしメッセージに画像が含まれていたら」という条件式
+    if (message.image) {
+      //メッセージに画像が含まれる場合のHTMLを作る
+      var html = 
+        `<div class="message" data-message-id=${message.id}>
+          <div class="message__upper">
+            <div class="message__upper__name">
+              ${message.user_name}
             </div>
-            <div class="message__text">
-              <p class="message__text__content">
-                ${message.content}
-              </p>
+            <div class="message__upper__history">
+              ${message.created_at}
             </div>
-            <img src=${message.image} class="message__text__image" >
-          </div>`
-        return html;
-      } else {
-        //メッセージに画像が含まれない場合のHTMLを作る
-        var html = 
-          `<div class="message" data-message-id=${message.id}>
-            <div class="message__upper">
-              <div class="message__upper__name">
-                ${message.user_name}
-              </div>
-              <div class="message__upper__history">
-                ${message.created_at}
-              </div>
+          </div>
+          <div class="message__text">
+            <p class="message__text__content">
+              ${message.content}
+            </p>
+          </div>
+          <img src=${message.image} class="message__text__image" >
+        </div>`
+      return html;
+    } else {
+      //メッセージに画像が含まれない場合のHTMLを作る
+      var html = 
+        `<div class="message" data-message-id=${message.id}>
+          <div class="message__upper">
+            <div class="message__upper__name">
+              ${message.user_name}
             </div>
-            <div class="message__text">
-              <p class="message__text__content">
-                ${message.content}
-              </p>
+            <div class="message__upper__history">
+              ${message.created_at}
             </div>
-          </div>`
-        return html
-      }
+          </div>
+          <div class="message__text">
+            <p class="message__text__content">
+              ${message.content}
+            </p>
+          </div>
+        </div>`
+      return html;
     }
+  }
 
   //submitのイベントをする
   $('#new_message').on('submit', function(e){
@@ -61,17 +61,15 @@ $(function(){
       var html = buildHTML(data);
       //messagesクラスが適用されているdiv要素の子要素の一番最後に追加
       $('.messages').append(html);
-      //scrollTopを高さに関して徐々に動かす
+      $('form')[0].reset();
+      //最新の投稿までの高さに移動する
       $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
+      // console.log($('.messages').append(html));
       //prop()を使ったdisabled属性の解除。input要素をfalseで無効化。
       $('input').prop('disabled', false);
-      $('form')[0].reset();
     })
     .fail(function() {
       alert("メッセージ送信に失敗しました");
     });
   });
 });
-
-//コンソール用
-//console.log(this);
