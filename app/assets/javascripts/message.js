@@ -61,7 +61,15 @@ $(function(){
       var html = buildHTML(data);
       //messagesクラスが適用されているdiv要素の子要素の一番最後に追加
       $('.messages').append(html);
+      //scrollTopを高さに関して徐々に動かす
+      $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
+      //prop()を使ったdisabled属性の解除。input要素をfalseで無効化。
+      $('input').prop('disabled', false);
       $('form')[0].reset();
     })
+
   });
 });
+
+//コンソール用
+//console.log(this);

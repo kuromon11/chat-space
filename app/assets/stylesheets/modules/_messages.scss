@@ -4,6 +4,7 @@
 
 .wrapper {
   display: flex;
+  height: 100vh;
 }
 
 .side-bar { //サイドバー
@@ -43,6 +44,8 @@
     background-color: #2f3e51;
     height: calc(100vh - 100px);
     padding: 20px;
+    // スクロールができるプロパティ
+    overflow: scroll;
     .group { //グループ名と最新のテキスト
       color: #ffffff;
       text-decoration: none;
@@ -117,6 +120,8 @@
     width: calc(100vw - 300px);
     background-color: #fafafa;
     padding: 35px 0 0 40px;
+    // スクロールができるプロパティ
+    overflow: scroll;
     .message { //メッセージのタイムライン
       margin-bottom: 46px;
       &__upper {
