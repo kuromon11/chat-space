@@ -63,11 +63,14 @@ $(function(){
       $('.messages').append(html);
       $('form')[0].reset();
       $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
-      //prop()を使ったdisabled属性の解除。input要素をfalseで無効化。
-      $('input').prop('disabled', false);
     })
     .fail(function() {
       alert("メッセージ送信に失敗しました");
+    })
+    //処理が完了すれば必ず実行する
+    .always(function(data){
+      //prop()を使ったdisabled属性の解除。input要素をfalseで無効化。
+      $('input').prop('disabled', false);
     });
   });
 });
