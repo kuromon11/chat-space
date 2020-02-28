@@ -1,4 +1,4 @@
-$(function(){
+$(function() {
   //ユーザー見つかる
   function addUser(user) {
     let html = `
@@ -15,6 +15,21 @@ $(function(){
         <p class="chat-group-user__name">ユーザーが見つかりません</p>
       </div>`;
     $("#user-search-result").append(html);
+  }
+  //追加候補にあるユーザーを削除
+  function addDeleteUser(name, id) {
+    let html = `
+      <div class="chat-group-user clearfix" id="${id}">
+      <p class="chat-group-user__name">${name}</p>
+      <div class="user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn" data-user-id="${id}" data-user-name="${name}">削除</div>
+    </div>`;
+    $(".js-add-user").append(html);
+  }
+  //メンバー一覧に新たにユーザーを追加
+  function addMember(userId) {
+    let html = `
+      <input value="${userId}" name="group[user_ids][]" type="hidden" id="group_user_ids_${userId}" />`;
+    $(`#${userId}`).append(html);
   }
 
   $("#user-search-field").on("keyup", function(){
@@ -43,11 +58,21 @@ $(function(){
       alert("通信エラーです。ユーザーが表示できません。");
     });
   });
-
-  // $(document).on("click", ".chat-group-user__btn--add", function() {
-  //   console.log("追加")
-  // });
-  // $(document).on("click", ".chat-group-user__btn--remove", function() {
-  //   console.log("削除")
-  // });
+  //追加をクリックするとグループに所属していないユーザーを新たに追加する
+  $(document).on("click", ".chat-group-user__btn--add", function() {
+    const userName = $(this).attr("data-user-name");
+    const userId = $(this).attr("data-user-id");
+    //チャットメンバーから要素を削除する
+    $(this)
+      .parent()
+      .remove();
+    addDeleteUser(userName, userId);
+    addMember(userId);
+  });
+  //削除をクリックするとグループに所属しているユーザーを削除する
+  $(document).on("click", ".chat-group-user__btn--remove", function() {
+    $(this)
+      .parent()
+      .remove();
+  });
 });
