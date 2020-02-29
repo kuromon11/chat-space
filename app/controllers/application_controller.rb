@@ -5,8 +5,6 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  # protect_from_forgery with: :null_session #CSRF保護が有効になってるらしいので、CSRF保護を無効にする。
-
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
