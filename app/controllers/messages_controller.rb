@@ -9,9 +9,9 @@ class MessagesController < ApplicationController
   def create
     @message = @group.messages.new(message_params)
     if @message.save
-      #JSON形式でレスポンスする
+      #フォーマットに応じたレスポンスを返す
       respond_to do |format|
-        format.json
+        format.json{ @new_message = Message.where('id > ?', params[:message][:id]) }
       end
     else
       @messages = @group.messages.includes(:user)
