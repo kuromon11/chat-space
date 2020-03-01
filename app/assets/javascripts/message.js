@@ -1,48 +1,48 @@
 $(function(){
   var buildHTML = function(message) {
-    var message_info = `<div class="message-upper">` +
-          `<div class="message__upper__name">` +
-            message.user_name +
-          `</div>` +
-          `<div class="message__upper__history">` +
-            message.created_at +
-          `</div>` +
-        `</div>`
+    var message_info = `<div class="message-upper">
+        <div class="message__upper__name">
+          ${message.user_name}
+        </div>
+        <div class="message__upper__history">
+          ${message.created_at}
+        </div>
+      </div>`
     // 「もしメッセージに画像が含まれていたら」という条件式
     if (message.content && message.image) {
       //メッセージに画像が含まれる場合のHTMLを作る。data-idが反映されるようにしている。文章と画像。
-      var html = `<div class="message" data-message-id=` + message.id + `>` +
-        message_info +
-        `<div class="message__text">` +
-          `<p class="message__text__content">` +
-            message.content +
-          `</p>` +
-          `<img src="` + message.image + `" class="message__text__image" >` +
-        `</div>` +
-      `</div>`
+      var html = `<div class="message" data-message-id=${message.id}>
+        ${message_info}
+        <div class="message__text">
+          <p class="message__text__content">
+            ${message.content}
+          </p>
+          <img src= "${message.image}" class="message__text__image">
+        </div>
+      </div>`
     } else if (message.content) {
       //同様に、data-idが反映されるようにしている。文章だけ。
-      var html = `<div class="message" data-message-id=` + message.id + `>` +
-        message_info +
-        `<div class="message__text">` +
-          `<p class="message__text__content">` +
-            message.content +
-          `</p>` +
-        `</div>` +
-      `</div>`
+      var html = `<div class="message" data-message-id=${message.id}>
+        ${message_info}
+        <div class="message__text">
+          <p class="message__text__content">
+            ${message.content}
+          </p>
+        </div>
+      </div>`
     } else if (message.image) {
-      //同様に、data-idが反映されるようにしている。画像だけ
-      var html = `<div class="message" data-message-id=` + message.id + `>` +
-        message_info +
-        `<div class="message__text">` +
-          `<img src="` + message.image + `" class="message__text__image" >` +
-        `</div>` +
-      `</div>`
+      //同様に、data-idが反映されるようにしている。画像だけ。
+      var html = `<div class="message" data-message-id=${message.id}>
+        ${message_info}
+        <div class="message__text">
+          <img src="${message.image}" class="message__text__image">
+        </div>
+      </div>`
     };
     return html;
   };
 
-  //submitのイベントをする
+  //submitのイベントをする(自分側)
   $('#new_message').on('submit', function(e){
     //ビューファイルを送信するアクションを止める
     e.preventDefault()
@@ -73,7 +73,7 @@ $(function(){
     });
   });
 
-// 相手側
+  // 相手側
   var reloadMessages = function() {
     //カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
     var last_message_id = $('.message:last').data("message-id");
@@ -96,7 +96,6 @@ $(function(){
         });
         //messagesクラスが適用されているdiv要素の子要素の一番最後に追加
         $('.messages').append(insertHTML);
-        // $('form')[0].reset();
         $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
       }
     })
