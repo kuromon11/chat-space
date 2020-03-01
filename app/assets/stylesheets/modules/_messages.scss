@@ -118,7 +118,6 @@
   }
 
   &__message-list {
-    // スクロールができるプロパティ
     .messages {
       height: calc(100vh - 100px - 90px);
       width: calc(100vw - 300px);
