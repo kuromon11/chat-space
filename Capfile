@@ -7,8 +7,8 @@ require 'capistrano/rails/migrations'
 require 'capistrano3/unicorn'
 
 # （追加）　https://tackeyy.com/blog/posts/fix-capistrano-deprecation-notice-after-capistrano-version-up
-require 'capistrano/scm/git'
-install_plugin Capistrano::SCM::Git
+# require 'capistrano/scm/git'
+# install_plugin Capistrano::SCM::Git
 
 Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
 
