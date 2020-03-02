@@ -1,16 +1,12 @@
 require "capistrano/setup"
 require "capistrano/deploy"
-
-require "capistrano/scm/git"
-install_plugin Capistrano::SCM::Git
-
 require 'capistrano/rbenv'
 require 'capistrano/bundler'
 require 'capistrano/rails/assets'
 require 'capistrano/rails/migrations'
 require 'capistrano3/unicorn'
 
-# （追加）　https://tackeyy.com/blog/posts/fix-capistrano-deprecation-notice-after-capistrano-version-up
+# （追加）deployの下？　https://tackeyy.com/blog/posts/fix-capistrano-deprecation-notice-after-capistrano-version-up
 # require 'capistrano/scm/git'
 # install_plugin Capistrano::SCM::Git
 
