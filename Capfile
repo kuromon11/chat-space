@@ -6,9 +6,5 @@ require 'capistrano/rails/assets'
 require 'capistrano/rails/migrations'
 require 'capistrano3/unicorn'
 
-# （追加）deployの下？　https://tackeyy.com/blog/posts/fix-capistrano-deprecation-notice-after-capistrano-version-up
-# require 'capistrano/scm/git'
-# install_plugin Capistrano::SCM::Git
-
 Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
 
